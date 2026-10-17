@@ -30,6 +30,16 @@ uv run ruff format --check .
 uv run ruff check .
 ```
 
+Run the source-layout, palindrome, syntax, and packaging gate with:
+
+```bash
+uv run --frozen bash scripts/check.sh
+```
+
+CI runs the same script without loading local training data. The gate checks
+the repository structure and the palindrome examples. ML experiments remain
+separate from this source-recovery gate.
+
 ## Layout
 
 - `dsa/`: data-structure and algorithm exercises.

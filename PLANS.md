@@ -24,3 +24,15 @@ Milestones:
 3. Update project metadata, dependencies, lockfile, and repository documentation.
 4. Run lint, compilation, tests, the palindrome checks, and the package build.
 5. Rename the GitHub repository, remote URL, and local working directory.
+
+## Source recovery
+
+Summary. Preserve the pending reorganization and the user classifier experiment in one review branch. Keep local datasets out of the public repository.
+
+- [x] Capture the exact source and review publication paths.
+- [x] Replay layout and metadata checks against main before restoring the source.
+- [ ] Restore the recorded source without changing algorithm behavior.
+- [ ] Verify formatting, syntax, palindrome examples and packaging.
+- [ ] Review, commit and sync the complete source packet.
+
+Earlier exercise checkboxes describe prior work. They do not verify the current classifier, which reads local Downloads data and remains outside this recovery gate.
