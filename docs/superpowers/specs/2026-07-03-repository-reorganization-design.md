@@ -15,7 +15,7 @@ algos-from-scratch/
 │   ├── in_numpy/
 │   ├── in_torch/
 │   └── sandbox/
-│       └── classifier_with_imbalanced_class.py
+│       └── classifier_with_imbalance_class.py
 ├── README.md
 └── pyproject.toml
 ```
@@ -32,7 +32,7 @@ The rename covers all visible repository identities:
 - local directory: `ml_algos-from-scratch` to `algos-from-scratch`;
 - GitHub repository: `komaksym/ml_algos-from-scratch` to
   `komaksym/algos-from-scratch`;
-- Git remote URL;
+- Git remote URL (SSH or HTTPS);
 - Python project name in `pyproject.toml`;
 - README title and description.
 
@@ -42,19 +42,22 @@ and the IDE.
 
 ## Screenshot exercise
 
-Create `ml/sandbox/classifier_with_imbalanced_class.py` as an intentionally
+Create `ml/sandbox/classifier_with_imbalance_class.py` as an intentionally
 incomplete starter matching the screenshot's public shape:
 
 - import `make_pipeline` from `imblearn.pipeline`;
 - import `LinearSVC` from `sklearn.svm`;
-- define `ClassifierWithImbalancedClass`;
+- define `ClassifierWithImbalanceClass`;
 - initialize a pipeline containing `LinearSVC`;
 - leave `train` and `predict` for the user to implement.
 
-Do not add scikit-learn or imbalanced-learn to project dependencies yet. The
-file is an exercise prompt, not part of the runnable project surface. Its
-docstring will state the optional packages required when the user is ready to
-run it.
+Add scikit-learn and imbalanced-learn to the development dependency group
+because the sandbox is a development exercise rather than part of the
+package's runtime surface.
+
+The same classifier file will generate a deterministic imbalanced
+binary-classification dataset, split it with stratification, train the wrapper,
+calculate ROC AUC from its predictions, and print the score when run directly.
 
 ## Existing work and scope control
 
@@ -75,11 +78,9 @@ After the moves and metadata edits:
 
 1. run Ruff formatting and lint checks across the repository;
 2. compile all tracked Python files to catch syntax errors without importing
-   optional exercise dependencies;
-3. run the existing palindrome checks;
-4. build the Python project with `uv build`;
-5. inspect `git diff --check`, the resulting tree, project metadata, remote URL,
+   them;
+3. run the classifier file and confirm it prints a valid ROC AUC score;
+4. run the existing palindrome checks;
+5. build the Python project with `uv build`;
+6. inspect `git diff --check`, the resulting tree, project metadata, remote URL,
    GitHub repository name, and final local directory name.
-
-The incomplete sandbox is validated syntactically only because importing it
-requires dependencies intentionally excluded from the project.

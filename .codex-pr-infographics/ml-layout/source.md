@@ -1,0 +1,1 @@
+The recovered layout keeps DSA at the root and groups NumPy, PyTorch, and sandbox exercises under ML. The existing palindrome command stays under DSA. A byte comparison proves 27 existing implementations moved unchanged.

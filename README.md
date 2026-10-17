@@ -1,6 +1,8 @@
-# ML Algorithms From Scratch
+# Algorithms From Scratch
 
-Small Python workspace for implementing classic ML and PyTorch interview exercises from scratch: training loops, simple neural nets, optimization basics, attention blocks, and similar junior ML engineer practice.
+Small Python workspace for data-structure, algorithm, and machine-learning
+interview exercises. It includes from-scratch NumPy implementations, PyTorch
+training components, and isolated practice sandboxes.
 
 ## Setup
 
@@ -28,7 +30,30 @@ uv run ruff format --check .
 uv run ruff check .
 ```
 
+Run the source-layout, palindrome, syntax, and packaging gate with:
+
+```bash
+uv run --frozen bash scripts/check.sh
+```
+
+CI runs the same script without loading local training data. The gate checks
+the repository structure and the palindrome examples. ML experiments remain
+separate from this source-recovery gate.
+
 ## Layout
 
-- `in_numpy/`: NumPy-first implementations for fundamentals.
-- `in_torch/`: PyTorch implementations and interview-style training loops.
+- `dsa/`: data-structure and algorithm exercises.
+- `ml/in_numpy/`: NumPy-first machine-learning implementations.
+- `ml/in_torch/`: PyTorch implementations and training components.
+- `ml/sandbox/`: intentionally incomplete ML exercises and their tests.
+
+## Imbalanced classification exercise
+
+Implement `train()` and `predict()` in
+`ml/sandbox/classifier_with_imbalance_class.py`, then run that same file:
+
+```bash
+uv run python ml/sandbox/classifier_with_imbalance_class.py
+```
+
+The script trains the classifier and prints the solution's ROC AUC score.

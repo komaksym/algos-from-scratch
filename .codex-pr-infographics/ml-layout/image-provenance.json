@@ -1,0 +1,14 @@
+{
+  "backend": "native imagegen via baoyu-infographic",
+  "prompt": "prompts/02-infographic-ml-layout.md",
+  "source_bytes": 1139895,
+  "packed_bytes": 831089,
+  "source_sha256": "a1fd5a1b018bdf0c94d8eecd8b40e8d6ede01d113cee1a8258bce5b58a42a567",
+  "packed_sha256": "4ceb24b81f4060e9278bf9d059ed569d7f3fb338a91802e77a12def2a4ff2e5c",
+  "scanlines_sha256": "b5d692fc02385f88e90c0a72ad99aaa3446530952abef0bb5e7d4e47f7537ebf",
+  "scanlines_identical": true,
+  "non_image_data_chunks_unchanged": true,
+  "operation": "IDAT zlib recompression only; pixels, dimensions, labels and all other chunks unchanged",
+  "decoded_rgb_sha256": "c727b7a65c49cacde7784ebfee91569020ea7e7e96717468e6686d9a79e7ccdd",
+  "inspection": "DSA contains Palindrome; ML contains NumPy, PyTorch and Sandbox. The footer says 27 implementations moved unchanged. Labels are readable and containment is correct."
+}
