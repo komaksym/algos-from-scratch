@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  stable-ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install locked lint version
+        run: python -m pip install 'ruff==0.15.12'
+      - name: Check format
+        run: ruff format --check .
+      - name: Lint sources
+        run: ruff check .
+      - name: Compile sources
+        run: python -m compileall -q dsa in_numpy in_torch
+      - name: Run palindrome examples
+        run: |
+          python dsa/palindrome.py > "$RUNNER_TEMP/palindrome.log" 2>&1
+          cat "$RUNNER_TEMP/palindrome.log"
+          grep -q '^OK:' "$RUNNER_TEMP/palindrome.log"
+          ! grep -q '^FAIL:' "$RUNNER_TEMP/palindrome.log"
