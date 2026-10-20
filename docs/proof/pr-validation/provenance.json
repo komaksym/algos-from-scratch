@@ -1,0 +1,14 @@
+{
+  "skill": "baoyu-infographic",
+  "backend": "codex-imagegen",
+  "image_sha256": "73ed41f5d9426ea1c47c2513720dc79f753330f8425b7b6ef3d53b602deea4a1",
+  "prompt_sha256": "6987b5bdfd27c305f80ec2076f1ad20eaaa1590af1a66ce68d14f99c191ec19c",
+  "purpose": "This image explains safe repository reconciliation, persistent checkpoints, and the remaining native activation gate.",
+  "visual_note": "Viewed the exact resizedPNG. Read Safe work across sessions; PRESERVE AND CLASSIFY; PERSIST AND VERIFY; RECOVER AND ENFORCE; Native activation: review hooks, then prove rejection; Installed is not proven active. Labels remain legible inside the border.",
+  "created_at": "2026-10-20T22:37:09.734870+00:00",
+  "layout": "structural-breakdown",
+  "style": "technical-schematic",
+  "aspect": "16:9",
+  "language": "en",
+  "post_processing": "Resized to1280pixels wide to meet the existing1024KiB source-file limit. No labels or composition changed."
+}

@@ -39,9 +39,8 @@ repos:
 
       - id: check-added-large-files
         name: check added large files
-        entry: uv run --frozen check-added-large-files --maxkb=1024
+        entry: uv run --frozen check-added-large-files --maxkb=1024 --enforce-all
         language: system
-        pass_filenames: false
 
       - id: commitizen
         name: commitizen check

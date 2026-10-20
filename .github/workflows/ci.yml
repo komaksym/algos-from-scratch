@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  UV_NO_SYNC: '1'
+
+jobs:
+  stable-ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.9.3'
+          enable-cache: false
+      - name: Install frozen development tools
+        run: uv sync --frozen --only-group dev
+      - name: Run configured repository checks
+        run: uv run --frozen prek run --all-files
+      - name: Check commit messages
+        env:
+          CI_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          CI_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: uv run --frozen cz check --rev-range "$CI_BASE_SHA..$CI_HEAD_SHA"
+      - name: Compile sources
+        run: uv run --frozen python -m compileall -q dsa in_numpy in_torch
+      - name: Run palindrome examples
+        run: |
+          uv run --frozen python dsa/palindrome.py > "$RUNNER_TEMP/palindrome.log" 2>&1
+          cat "$RUNNER_TEMP/palindrome.log"
+          grep -q '^OK:' "$RUNNER_TEMP/palindrome.log"
+          ! grep -q '^FAIL:' "$RUNNER_TEMP/palindrome.log"
