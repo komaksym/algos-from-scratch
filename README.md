@@ -29,7 +29,8 @@ uv run ruff check .
 ```
 
 The `stable-ci` job runs on every pull request and push to `main` with Python 3.13.
-It uses Ruff 0.15.12 from `uv.lock`, compiles the sources, and runs the palindrome examples.
+It installs the frozen development group and runs every configured repository check, source compilation, and the palindrome examples.
+`UV_NO_SYNC=1` keeps nested hook commands in that development environment after the explicit installation step.
 The job rejects a failed example even though the current example runner exits successfully on a mismatch.
 It does not install NumPy or PyTorch, run training, or validate those implementations at runtime.
 
